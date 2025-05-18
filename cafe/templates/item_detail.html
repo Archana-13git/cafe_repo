@@ -1,0 +1,21 @@
+<h2>{{ item.name }}</h2>
+<p>{{ item.description }}</p>
+<p><strong>Price:</strong> Rs.{{ item.price }}</p>
+
+<h3>Customer Reviews</h3>
+{% for review in reviews %}
+    <div>
+        <strong>{{ review.name }}</strong> ({{ review.rating }}/5):
+        <p>{{ review.comment }}</p>
+        <small>{{ review.created_at }}</small>
+    </div>
+{% empty %}
+    <p>No reviews yet.</p>
+{% endfor %}
+
+<h3>Leave a Review</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit Review</button>
+</form>

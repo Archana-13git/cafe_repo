@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation Confirmed | Café Royale</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            background: url("{% static 'images/reservation-bg.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #3E2723;
+        }
+
+        .success-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(0,0,0,0.3);
+        }
+
+        .success-container h2 {
+            color: #4B2E1E;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .success-container p {
+            font-size: 18px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 20px;
+            background-color: #4B2E1E;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background-color: #B87333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="success-container">
+    <h2>Reservation Confirmed! ☕</h2>
+    <p>Thank you for choosing <strong>Café Royale</strong>.</p>
+    <p>We've received your reservation and are excited to welcome you soon.</p>
+    <p>Check your email for confirmation and further details.</p>
+    
+    <a href="{% url 'home' %}" class="back-btn">Back to Home</a>
+</div>
+
+</body>
+</html>

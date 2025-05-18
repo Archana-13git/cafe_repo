@@ -1,0 +1,181 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Café Royale</title>
+    <style>
+        /* Root Variables */
+:root {
+    --primary-color: #4B2E1E; /* Deep Coffee */
+    --secondary-color: #A67B5B; /* Warm Cappuccino */
+    --background-color: #F4EFE7; /* Soft Vintage Parchment */
+    --text-color: #3E2723; /* Ink Brown */
+    --card-background: rgba(255, 255, 255, 0.85); /* Faded Parchment */
+    --accent-color: #B87333; /* Antique Copper */
+    --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&display=swap');
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* Artistic Background */
+body {
+    background: url("{% static 'images/log1.png' %}") no-repeat center center/cover; 
+    color: rgb(43, 1, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+
+
+.signup-container {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 40px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+/* Form Fields */
+.signup-container form p {
+    margin: 15px 0;
+    text-align: left;
+    font-size: 18px;
+}
+
+.signup-container input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    font-size: 16px;
+    background: #FAF3E0;
+    outline: none;
+}
+
+/* Password Toggle */
+.password-container {
+    position: relative;
+}
+.password-container input {
+    padding-right: 40px;
+}
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 60%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--secondary-color);
+}
+
+/* Submit Button */
+.signup-container button {
+    background: linear-gradient(145deg, var(--primary-color), var(--accent-color));
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.signup-container button:hover {
+    background: var(--secondary-color);
+}
+
+/* Login Link */
+.signup-container a {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-style: italic;
+    font-size: 15px;
+}
+.signup-container a:hover {
+    color: var(--accent-color);
+}
+
+       
+
+    </style>
+    <script>
+        function togglePassword() {
+            let passwordInput = document.getElementById("password");
+            let cupIcon = document.getElementById("cup-icon");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                cupIcon.textContent = "☕"; // Coffee cup for visible password
+            }
+            }
+        
+    </script>
+</head>
+<body>
+
+    <div class="signup-container">
+        <h2 style="font-family: 'Great Vibes', cursive;">Join Café Royale</h2>
+        <p>Sign up to explore our exclusive coffee menu and offers.</p>
+
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            
+            <p>
+                <label for="username">Username:</label>
+                <input type="text" name="username" required>
+            </p>
+
+            <p>
+                <label for="email">Email:</label>
+                <input type="email" name="email" required>
+            </p>
+
+            <p class="password-container">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <span class="toggle-password" id="cup-icon" onclick="togglePassword()">☕</span>
+            </p>
+
+            <button type="submit" class="btn btn-success w-100">signup</button>
+        </form>
+
+       <a href="{% url 'login' %}">Already have an account? Login ☕</a>
+    </div>
+
+</body>
+</html>

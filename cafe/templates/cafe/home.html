@@ -1,0 +1,227 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Café Royale</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    :root {
+      --primary-color: #5C4033;
+      --secondary-color: #D2B48C;
+      --background-color: #FAF3E0;
+      --text-color: #3E2723;
+      --highlight-color: #FFD700;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Garamond', serif;
+    }
+
+    body {
+      /* background: url("{% static 'images/pt12.png' %}") no-repeat center center fixed; */
+      background-size: cover;
+      color: var(--text-color);
+    }
+
+    .navbar {
+      background-color: var(--primary-color);
+      padding: 15px 20px;
+      text-align: center;
+      font-family: 'Georgia', serif;
+    }
+
+    .navbar a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-size: 18px;
+      margin: 0 15px;
+      transition: color 0.3s;
+    }
+
+    .navbar a:hover {
+      color: var(--highlight-color);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px 40px;
+      
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      color: rgb(43, 1, 1);
+      font-size: 60px;
+      font-weight:bolder ;
+      
+
+    }
+
+    .hero p {
+      font-size: 48px;
+      color: rgb(0, 0, 0);
+      font-size: 40px;
+      font-weight:bolder ;
+    }
+
+
+    section {
+  /* background: url("{% static 'images/pt13.png' %}") no-repeat center center; */
+  background-size: cover;
+  margin: 30px auto;
+  padding: 50px 40px;
+  width: 85%;
+  max-width: 1000px;
+  border-radius: 20px;
+  border: 3px solid rgba(75, 46, 30, 0.4);
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+  font-family: 'Georgia', serif;
+}
+
+section h2 {
+  color: #3B1C0A; /* Dark brown */
+  margin-bottom: 20px;
+  font-size: 36px;
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+  text-shadow: 1px 1px 2px #a67b5b;
+  border-bottom: 2px dashed #8B4513;
+  padding-bottom: 10px;
+}
+
+section p,
+section li {
+  font-size: 17px;
+  line-height: 1.9;
+  font-weight: 500;
+  color: #3B1C0A; /* Dark brown */
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  margin-bottom: 10px;
+  font-size: 26px;
+}
+
+ul {
+  padding-left: 25px;
+}
+
+.review {
+  margin: 20px 0;
+  padding-left: 30px;
+  position: relative;
+  font-style: italic;
+  color: #402218;
+}
+
+.review .glyphicon {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  color: #B87333;
+}
+
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(92, 64, 51, 0.8);
+      color: #fff;
+      font-size: 14px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      section {
+        width: 95%;
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'menu' %}">Menu</a>
+    <a href="{% url 'contact' %}">Contact</a>
+    <a href="{% url 'place_order' %}">Order</a>
+    
+  </div>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>Welcome to Café Royale</h1>
+    <p>Where Every Cup Tells a Story</p>
+  </div>
+
+  <!-- About Us -->
+  <section id="about">
+    <h2>Our Legacy</h2>
+    <p>
+      In the heart of the city, Café Royale stands as a testament to timeless traditions, echoing the rich tapestry of ancient coffee culture.
+      From hand-ground beans to warm wooden interiors, every corner whispers stories of centuries past.
+    </p>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <h2>Our Offerings</h2>
+    <ul>
+      <li> Exquisite Coffee Blends</li>
+      <li> Artisanal Pastries</li>
+      <li> Cozy Reading Nooks</li>
+      <li> Live Acoustic Sessions</li>
+    </ul>
+  </section>
+
+  <!-- Special Offers -->
+  <section id="special-offers">
+    <h2>Special Offers</h2>
+    <p>
+      Join us this weekend for a complimentary dessert with every coffee purchase!
+      Enjoy our "Royal Hours" every evening from 5 PM to 7 PM – Buy One, Get One Free.
+    </p>
+  </section>
+  
+  <!-- contact us -->
+  <section id="special-offers">
+    <h2>Contact Us</h2>
+    <ul>
+      <li>Email : caferoyalelive@gmail.com</li>
+      <li>Phone : 9345682909</li>
+      <li>Address : Kalavasal , opposite to Aristo hospital , Madurai.</li>
+    </ul>
+  </section>
+
+  <!-- Customer Reviews -->
+  <section id="reviews">
+    <h2>Customer Testimonials</h2>
+    <div class="review">
+      <span class="glyphicon glyphicon-user"></span>
+      <p>"An unparalleled ambiance and the best espresso in town!" – Alex J.</p>
+    </div>
+    <div class="review">
+      <span class="glyphicon glyphicon-user"></span>
+      <p>"A delightful experience that transports you to another era." – Maria S.</p>
+    </div>
+    <div class="review">
+      <span class="glyphicon glyphicon-user"></span>
+      <p>"Warm staff, cozy corners, and a book-friendly vibe – what more could a writer ask for?" – Liam W.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>© 2025 Café Royale | All Rights Reserved</p>
+  </div>
+
+</body>
+</html>

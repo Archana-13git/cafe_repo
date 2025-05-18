@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | Café Royale</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Dancing+Script&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4B2E1E;
+            --secondary-color: #A67B5B;
+            --background-color: #f8f8f8;
+            --text-color: #3E2723;
+            --card-background: #FFF5E1;
+            --accent-color: #B87333;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: var(--background-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            display: flex;
+            width: 900px;
+            height: 520px;
+            box-shadow: 0 8px 20px var(--shadow-color);
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .card-left {
+            flex: 1;
+            background: url("{% static 'images/log.png' %}") no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+            color: white;
+            position: relative;
+        }
+
+        .card-left::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+        }
+
+        .card-left h2 {
+            position: relative;
+            font-family: 'Dancing Script', cursive;
+            font-size: 36px;
+            margin-bottom: 15px;
+            z-index: 1;
+        }
+
+        .card-left p {
+            position: relative;
+            z-index: 1;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .card-right {
+            flex: 1;
+            background: var(--card-background);
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-right h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        form {
+            margin-top: 10px;
+        }
+
+        form p {
+            margin: 15px 0;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            background-color: #FFFDF6;
+            font-size: 15px;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 55%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: var(--secondary-color);
+            cursor: pointer;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: var(--accent-color);
+        }
+
+        a {
+            display: block;
+            margin-top: 15px;
+            font-size: 14px;
+            text-align: center;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                flex-direction: column;
+                width: 95%;
+                height: auto;
+            }
+
+            .card-left, .card-right {
+                padding: 30px;
+            }
+
+            .card-left {
+                height: 250px;
+                background-position: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="card-left">
+        <h2>Welcome  !</h2>
+        <p>Join the aroma of roasted beans and warm moments.<br>
+           Let's continue your journey with Café Royale ☕</p>
+    </div>
+
+    <div class="card-right">
+        <h2>Login to Café Royale</h2>
+        <form method="POST" action="{% url 'home' %}">
+            {% csrf_token %}
+            <p>
+                <label for="username">Username:</label>
+                <input type="text" name="username" required>
+            </p>
+            <p class="password-container">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <span class="toggle-password" id="cup-icon" onclick="togglePassword()">☕</span>
+            </p>
+            <button type="submit">Login</button>
+        </form>
+        <a href="{% url 'signup' %}">Don't have an account? Sign up</a>
+    </div>
+</div>
+
+<script>
+    function togglePassword() {
+        let passwordInput = document.getElementById("password");
+        let icon = document.getElementById("cup-icon");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            icon.style.color = "#B87333";
+        } else {
+            passwordInput.type = "password";
+            icon.style.color = "#A67B5B";
+        }
+    }
+</script>
+
+</body>
+</html>
